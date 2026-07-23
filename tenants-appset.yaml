@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: tenants-appset
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/lpanza/rhoai-tenants.git
+      revision: main
+      files:
+      - path: 'tenants/**/kustomization.yaml'
+  template:
+    metadata:
+      name: "tenant-{{path.basename}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/lpanza/rhoai-tenants.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+      syncPolicy:
+        automated:
+          enabled: true

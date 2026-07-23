@@ -1,0 +1,8 @@
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: mlops-project-credit-chatbot
+users:
+- user1
+- user2
