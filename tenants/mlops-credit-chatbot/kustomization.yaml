@@ -6,3 +6,6 @@ namespace: mlops-credit-chatbot
 resources:
 - ../../templates/base
 - edit-rb.yaml
+
+patches:
+- path: patch-ns-annotations.yaml
