@@ -8,6 +8,6 @@ roleRef:
   kind: ClusterRole
   name: edit
 subjects:
-- apiGroup: user.openshift.io/v1
+- apiGroup: rbac.authorization.k8s.io
   kind: Group
   name: mlops-project-credit-chatbot
